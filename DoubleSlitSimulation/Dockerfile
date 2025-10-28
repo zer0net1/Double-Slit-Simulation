@@ -11,6 +11,9 @@ COPY ["DoubleSlitSimulation/DoubleSlitSimulation.csproj", "DoubleSlitSimulation/
 RUN dotnet restore "DoubleSlitSimulation/DoubleSlitSimulation.csproj"
 COPY . .
 WORKDIR "/src/DoubleSlitSimulation"
+RUN dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+ENV PATH="$PATH:/root/.dotnet/tools"
+RUN libman restore
 RUN dotnet build "./DoubleSlitSimulation.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
