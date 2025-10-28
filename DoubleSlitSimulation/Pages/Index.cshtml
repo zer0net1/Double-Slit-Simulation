@@ -1,0 +1,68 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Double Slit Experiment Simulation";
+}
+
+<div class="main-container">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="display-section">
+        <div id="schematicCanvasContainer">
+            <canvas id="schematicCanvas" width="400" height="400"></canvas>
+            <p class="canvas-caption">Schematic View</p>
+        </div>
+
+        <div id="simulationCanvasContainer">
+            <canvas id="simulationCanvas" width="800" height="400"></canvas>
+            <p class="canvas-caption">Interference Pattern</p>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div>
+            <input type="radio" name="SlitsAmount" id="one"/>
+            <label>One</label>
+            <input type="radio" name="SlitsAmount" id="two" checked="checked"/>
+            <label>Two</label>
+            <input type="radio" name="SlitsAmount" id="other"/>
+            <label>Other</label>
+            <input type="number" id="userValue" min="3" max="500" value="3" step="1" style="display: none;"/>
+        </div>
+        <div>
+            <input type="range" id="wavelength" min="250" max="750" value="600" step="1" style="width: 500px;">
+            <label id="wavelengthL">Wavelength: 600nm</label>
+        </div>
+        <div>
+            <input type="range" id="slitWidth" min="10" max="99" value="20" step="1" style="width: 500px;">
+            <label id="slitWidthL">Slit Width: 20µm</label>
+        </div>
+        <div>
+            <input type="range" id="slitSeparation" min="101" max="500" value="100" step="1" style="width: 500px;">
+            <label id="slitSeparationL">Slit Separation: 100µm</label>
+        </div>
+        <div>
+            <input type="range" id="screenDistance" min="0.1" max="100" value="100" step="0.1" style="width: 500px;">
+            <label style="width: 200px" id="screenDistanceL">Screen Distance: 100cm</label>
+        </div>
+        <div>
+            <input type="range" id="ScreenPhysicalWidth" min="0.001" max="0.1" value="0.1" step="0.001" style="width: 500px"/>
+            <label id="ScreenPhysicalWidthL">Physical Width per Pixel: 0.100m</label>
+        </div>
+        <div>
+            <input type="radio" name="MethodType" id="Huygens" value="false"/>
+            <label id="HuygensL">Numerical Huygens Method</label>
+            <input type="radio" name="MethodType" id="Fraunhofer" checked="checked"/>
+            <label id="FraunhoferL">Analytical Fraunhofer Approximation</label>
+        </div>
+        <div>
+            <input type="range" id="SamplesPerSlit" min="20" max="1000" value="150" step="1" style="display: none; width: 500px"/>
+            <label id="SamplesPerSlitL" style="display: none;">Amount of Samples of Secondary Waves: 150</label>
+        </div>
+        <div>
+            <input type="button" value="Press" id="Check" style="display: none; width: 500px"/>
+            <label id="CheckL" style="display: none;">Show graph of error between methods</label>
+        </div>
+    </div>
+</div>
+<div style="display: none" id="chartContainer"></div>
