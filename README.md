@@ -5,7 +5,7 @@ It visualizes how light behaves when passing through narrow slits and produces a
 ---
 
 ## How to run
-I host the project to render so you can access it any time at:
+I host the project on render so you can access it any time at:
 
 **https://double-slit-simulation.onrender.com/**
 
